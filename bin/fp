@@ -1,0 +1,8 @@
+#! /bin/bash
+
+ssl=/etc/puppetlabs/puppet/ssl
+
+curl "$@" -k --cert $ssl/certs/pe-internal-classifier.pem \
+     --key  $ssl/private_keys/pe-internal-classifier.pem \
+     --cacert $ssl/certs/ca.pem \
+     -X DELETE https://puppet-master:8140/puppet-admin-api/v1/jruby-pool

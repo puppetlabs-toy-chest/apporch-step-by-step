@@ -1,0 +1,9 @@
+#! /bin/bash
+
+C=/etc/puppetlabs/code
+
+cp -pr /home/lutter/code/pp-code ${C}.new
+chown -R pe-puppet: ${C}.new
+[ -d "${C}" ] && mv ${C} ${C}.old
+mv ${C}.new ${C}
+rm -rf ${C}.old

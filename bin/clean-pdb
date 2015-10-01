@@ -1,0 +1,8 @@
+#! /bin/bash
+
+runuser -c '/opt/puppetlabs/server/bin/psql pe-puppetdb' pe-postgres <<EOF
+delete from catalogs
+  where id in (select catalog_id
+                 from catalog_resources
+                where 'producer:production' = any(tags));
+EOF
