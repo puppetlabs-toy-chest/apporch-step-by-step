@@ -3,16 +3,14 @@
 node agent1 {
   db { pao_db:
     user => jessie,
-    password => secret
+    password => secret,
+    export => Sql[pao_db]
   }
 }
 
 node agent2 {
   web { pao_w1:
-    database => pao_db,
-    dbuser => jessie,
-    dbpassword => secret,
-    dbhost => agent1,
+    consume => Sql[pao_db]
   }
 }
 

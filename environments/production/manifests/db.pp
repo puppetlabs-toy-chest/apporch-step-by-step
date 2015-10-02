@@ -10,3 +10,11 @@ EOS
 
   file { "/root/${name}.txt": content => $txt }
 }
+
+Db produces Sql {
+  user => $user,
+  password => $password,
+  host => $::fqdn,
+  port => 5432,
+  database => $database
+}

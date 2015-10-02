@@ -15,3 +15,10 @@ EOS
 
   file { "/root/${name}.txt": content => $txt }
 }
+
+Web consumes Sql {
+  dbuser => $user,
+  dbpassword => $password,
+  dbhost => $host,
+  database => $database
+}
