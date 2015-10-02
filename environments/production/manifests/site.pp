@@ -6,7 +6,8 @@ site {
     webs  => ['w1', 'w2', 'w3'],
     nodes => {
       Node[agent1] => Db[pao_db],
-      Node[agent2] => [ Web[pao_w1], Web[pao_w2], Web[pao_w3] ]
+      Node[agent2] => [ Web[pao_w1], Web[pao_w2], Web[pao_w3] ],
+      Node[agent3] => Lb[pao_lb],
     }
   }
 }

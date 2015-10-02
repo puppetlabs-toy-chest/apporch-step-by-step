@@ -10,6 +10,13 @@ application webapp($dbpassword = 'secret', $webs) {
   $webs.each |$web| {
     web { "${name}_${web}":
       consume => Sql[$dbname],
+      export  => Http["${name}_${web}"]
     }
+  }
+
+  $members = $webs.map |$web| { Http["${name}_${web}"] }
+  lb { "${name}_lb":
+    members => $members,
+    require => $members
   }
 }

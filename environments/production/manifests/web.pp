@@ -22,3 +22,9 @@ Web consumes Sql {
   dbhost => $host,
   database => $database
 }
+
+Web produces Http {
+  host => $::fqdn,
+  port => $port,
+  scheme => 'http'
+}
