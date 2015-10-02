@@ -1,16 +1,11 @@
 ## site.pp ##
 
-node agent1 {
-  db { pao_db:
-    user => jessie,
-    password => secret,
-    export => Sql[pao_db]
-  }
-}
-
-node agent2 {
-  web { pao_w1:
-    consume => Sql[pao_db]
+site {
+  webapp { pao:
+    nodes => {
+      Node[agent1] => Db[pao_db],
+      Node[agent2] => Web[pao_w1]
+    }
   }
 }
 
